@@ -21,10 +21,10 @@ export class ProductController {
     constructor(private productService: ProductService){}
 
     @Get('/')
-    getMessage(@Res() res: any){
-	return res.status(HttpStatus.OK).json("Hola jeje");
+    async getMessage(@Res() res: any){
+	const products = await this.productService.getAllProducts();
+	return res.status(HttpStatus.OK).json(products);
     }
-
 }
 
 
